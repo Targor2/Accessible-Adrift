@@ -27,9 +27,11 @@ def main():
             result = outputField.window_text()
             new = result.split("Ø")[-1].strip()
             lines = new.splitlines()
+            for i in range(len(lines)):
+                lines[i] = textwrap.fill(lines[i], width=columns, replace_whitespace=False)
             new = "\n".join(lines[1:])
             if showOutput:
-                print(textwrap.fill(new, width=columns))
+                print(new.strip())
             showOutput = True
             command = input(">")
             if command == "quit":
